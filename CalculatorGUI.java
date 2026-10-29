@@ -189,3 +189,69 @@ public class Calculator extends JFrame implements ActionListener {
         new Calculator();
     }
 }
+
+
+```java
+import javax.swing.JOptionPane;
+
+public class Calculator {
+    public static void main(String[] args) {
+
+        double num1, num2, result;
+        String operator;
+
+        num1 = Double.parseDouble(
+            JOptionPane.showInputDialog("Enter the first number:")
+        );
+
+        num2 = Double.parseDouble(
+            JOptionPane.showInputDialog("Enter the second number:")
+        );
+
+        operator = JOptionPane.showInputDialog(
+            "Choose an operator:\n+ Addition\n- Subtraction\n* Multiplication\n/ Division"
+        );
+
+        switch (operator) {
+            case "+":
+                result = num1 + num2;
+                break;
+
+            case "-":
+                result = num1 - num2;
+                break;
+
+            case "*":
+                result = num1 * num2;
+                break;
+
+            case "/":
+                if (num2 == 0) {
+                    JOptionPane.showMessageDialog(
+                        null, "Error: Cannot divide by zero!"
+                    );
+                    return;
+                }
+
+                result = num1 / num2;
+                break;
+
+            default:
+                JOptionPane.showMessageDialog(
+                    null, "Invalid operator!"
+                );
+                return;
+        }
+
+        JOptionPane.showMessageDialog(
+            null,
+            "First Number: " + num1 +
+            "\nOperator: " + operator +
+            "\nSecond Number: " + num2 +
+            "\nResult: " + result,
+            "Calculator Result",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+}
+```
